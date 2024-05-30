@@ -8,6 +8,29 @@
 
 <div class="container mt-5">
     <h1>Ice Cream Catalog</h1>
+    <form method="GET" action="{{ route('catalog.show') }}" class="mb-4">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="type">Type</label>
+                <select id="type" name="type" class="form-control">
+                    <option value="">All Types</option>
+                    @foreach($tipe as $type)
+                        <option value="{{ $type->id }}">{{ $type->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="flavor">Flavor</label>
+                <select id="flavor" name="flavor" class="form-control">
+                    <option value="">All Flavors</option>
+                    @foreach($rasa as $flavor)
+                        <option value="{{ $flavor->id }}">{{ $flavor->flavor }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
     <table class="table table-bordered">
         <thead>
             <tr>

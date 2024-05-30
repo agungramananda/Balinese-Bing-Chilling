@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\eskrims;
+use App\Models\flavors;
+use App\Models\types;
+use App\Models\eskrims_flavors;
 use Illuminate\Http\Request;
+
+use function PHPSTORM_META\type;
 
 class EskrimController extends Controller
 {
@@ -18,10 +23,23 @@ class EskrimController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Request $request)
     {
-       $es = eskrims::with('flavor')->get();
-       return view('catalog',['eskrim'=>$es]); 
+      $query = eskrims::query();
+
+      if ($request->has('type') && $request->type != '') {
+         $query->where('type_id', $request->type);
+      }
+  
+      if ($request->has('flavor') && $request->flavor != '') {
+         $es_id = eskrims_flavors::where('flavors_id', $request->flavor)->pluck('eskrims_id');
+         $query->whereIn('id', $es_id);
+      }
+
+      $es = $query->get();
+      $tipe = types::all();
+      $rasa = flavors::all();
+      return view('catalog',['eskrim'=>$es,'tipe'=>$tipe,'rasa'=>$rasa]); 
     }
 
 }

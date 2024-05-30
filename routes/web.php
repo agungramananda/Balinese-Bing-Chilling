@@ -8,5 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [EskrimController::class,'home']);
-Route::get('/catalog',[EskrimController::class,'show']);
+Route::get('/catalog',[EskrimController::class,'show'])->name('catalog.show');
 Route::get('/about',[EskrimController::class,'about']);
