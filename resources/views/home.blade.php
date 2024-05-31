@@ -112,17 +112,17 @@
       <nav>
         <ul>
           <li>
-            <a href="index.html" class="link active">
+            <a href="{{ 'home' }}" class="link active">
               <span>Home</span>
             </a>
           </li>
           <li>
-            <a href="about.html" class="link">
+            <a href="{{ 'about' }}" class="link">
               <span>About</span>
             </a>
           </li>
           <li>
-            <a href="catalogue.html" class="link">
+            <a href="{{ 'catalog' }}" class="link">
               <span>Catalogue</span>
             </a>
           </li>

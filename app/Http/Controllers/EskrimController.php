@@ -20,6 +20,10 @@ class EskrimController extends Controller
        return view('home');
     }
 
+    public function about()
+    {
+       return view('about');
+    }
     /**
      * Display the specified resource.
      */
@@ -37,9 +41,10 @@ class EskrimController extends Controller
       }
 
       $es = $query->get();
+      $kosong = $es->isEmpty();
       $tipe = types::all();
       $rasa = flavors::all();
-      return view('catalog',['eskrim'=>$es,'tipe'=>$tipe,'rasa'=>$rasa]); 
+      return view('catalog',['eskrim'=>$es,'tipe'=>$tipe,'rasa'=>$rasa,'kosong'=>$kosong]); 
     }
 
 }
