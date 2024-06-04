@@ -1,74 +1,79 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Ice Cream Catalog</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-
-<div class="container mt-5">
-  <h1>Ice Cream Catalog</h1>
-
-  <form method="GET" action="{{ route('catalog.show') }}" class="mb-4">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="type">Type</label>
-        <select id="type" name="type" class="form-control">
-          <option value="">All Types</option>
-          @foreach($tipe as $type)
-            <option value="{{ $type->id }}" {{ old('type') == $type->id ? 'selected' : '' }}>{{ $type->type }}</option>
-          @endforeach
-        </select>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+    @vite('resources/css/style.css')
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="{{ 'home' }}" class="link">
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ 'about' }}" class="link active">
+              <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ 'catalog' }}" class="link">
+              <span>Catalogue</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <form method="GET" action="{{ route('catalog.show') }}">
+      <div>
+        <div>
+          <label for="type">Type</label>
+          <select name="type" id="type">
+            <option value="">All Types</option>
+            @foreach ($tipe as $type)
+              <option value="{{ $type->id }}">{{ $type->type }}</option>
+            @endforeach
+          </select>
+        </div>
       </div>
-      <div class="form-group col-md-6">
+      <div>
         <label for="flavor">Flavor</label>
-        <select id="flavor" name="flavor" class="form-control">
+        <select name="flavor" id="flavor">
           <option value="">All Flavors</option>
-          @foreach($rasa as $flavor)
-            <option value="{{ $flavor->id }}" {{ old('flavor') == $flavor->id ? 'selected' : '' }}>{{ $flavor->flavor }}</option>
+          @foreach ($rasa as $flavor)
+            <option value="{{ $flavor->id }}">{{ $flavor->flavor }}</option>
           @endforeach
         </select>
       </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Filter</button>
-  </form>
-
-  @if ($kosong)
-    <div class="alert alert-warning" role="alert">
-      No ice cream found.
-    </div>
-  @else
-
-    <div class="row">
-      @foreach($eskrim as $iceCream)
-        <div class="col-md-4 mb-3">
-          <div class="card">
-            @if ($iceCream->image!==null)
-              <img src="{{--  --}}" class="card-img-top" alt="Ice Cream Image">
-            @else
-              <img src="/images/not-found.png" class="card-img-top" alt="Ice Cream Image">
-            @endif
-            <div class="card-body">
-              <h5 class="card-title">{{ $iceCream->name }}</h5>
-              <p class="card-text">
-                Type: {{ $iceCream->type->type }}<br>
-                Size: {{ $iceCream->size->size }}<br>
-                Topping: {{ $iceCream->topping->topping ?? 'None' }}<br>
-                Price: {{ $iceCream->price }}
-              </p>
-              <p class="card-text">Description: {{ $iceCream->description }}</p>
-              <p class="card-text">Flavors: 
-                @foreach($iceCream->flavor as $flavor)
-                  {{ $flavor->flavor }}@if (!$loop->last), @endif
-                @endforeach
-              </p>
-            </div>
+      <button type="submit">Filter</button>
+    </form>
+    
+    @if ($kosong)
+      <p>Nanda Gay</p>
+    @else
+      <div class="icecream">
+      @foreach ( $eskrim as $iceCream)
+        <div class="card">
+          @if ($iceCream->image)
+            <img src="{{ $iceCream->image }}" alt="" class="card-image" />
+          @else
+            <img src="/images/not-found.png" alt="Nanda Gay">
+          @endif
+          <div class="card-content">
+            <h3>{{ $iceCream->name }}</h3>
+            <h3>{{ $iceCream->type->type }}</h3>
+            <h3>{{ $iceCream->size->size }}</h3>
+            <h3>{{ $iceCream->topping->topping ?? "None" }}</h3>
+            <p>{{ $iceCream->description }}</p>
+            <p class="price">{{ $iceCream->price }}</p>
           </div>
         </div>
       @endforeach
-    </div>
-  @endif
-</div>
-
-</body>
+      </div>
+    @endif
+  </body>
 </html>

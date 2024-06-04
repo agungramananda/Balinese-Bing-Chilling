@@ -29,22 +29,21 @@ class EskrimController extends Controller
      */
     public function show(Request $request)
     {
-      $query = eskrims::query();
+        $query = eskrims::query();
 
-      if ($request->has('type') && $request->type != '') {
-         $query->where('type_id', $request->type);
-      }
-  
-      if ($request->has('flavor') && $request->flavor != '') {
-         $es_id = eskrims_flavors::where('flavors_id', $request->flavor)->pluck('eskrims_id');
-         $query->whereIn('id', $es_id);
-      }
+        if ($request->has('type') && $request->type != '') {
+            $query->where('type_id', $request->type);
+        }
 
-      $es = $query->get();
-      $kosong = $es->isEmpty();
-      $tipe = types::all();
-      $rasa = flavors::all();
+        if ($request->has('flavor') && $request->flavor != '') {
+            $es_id = eskrims_flavors::where('flavors_id', $request->flavor)->pluck('eskrims_id');
+            $query->whereIn('id', $es_id);
+        }
+
+        $es = $query->get();
+        $kosong = $es->isEmpty();
+        $tipe = types::all();
+        $rasa = flavors::all();
       return view('catalog',['eskrim'=>$es,'tipe'=>$tipe,'rasa'=>$rasa,'kosong'=>$kosong]); 
     }
-
 }
