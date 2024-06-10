@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bing Chilling Enterprise</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    @vite(['resources/css/main.css','recources/js/bc_js/work.js'])
+    @vite(['resources/css/main.css','resources/js/bc_js/work.js'])
     <link rel="icon" href="./images/fav.ico?9" sizes="any" />
   </head>
   <body>
