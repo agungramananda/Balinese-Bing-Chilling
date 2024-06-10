@@ -36,6 +36,7 @@
           </ul>
         </nav>
       </header>
+      <p>{{ $eskrim }}</p>
       <section>
         <form method="GET" action="{{ route('catalog.show') }}">
           <div class="filter-form">

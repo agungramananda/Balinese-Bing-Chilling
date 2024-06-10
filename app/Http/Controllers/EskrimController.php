@@ -44,7 +44,6 @@ class EskrimController extends Controller
         $kosong = $es->isEmpty();
         $tipe = types::all();
         $rasa = flavors::all();
-        echo $es;
       return view('catalog',['eskrim'=>$es,'tipe'=>$tipe,'rasa'=>$rasa,'kosong'=>$kosong]); 
     }
 }
