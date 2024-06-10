@@ -80,6 +80,7 @@
                   @foreach($iceCream->flavor as $flavor)
                     <h4>{{ $flavor->flavor }}</h4>
                   @endforeach
+                </div>
                 <h3>Size : {{ $iceCream->size->size }}</h3>
                 @if ($iceCream->topping!=null)
                   <h3>Topping : {{ $iceCream->topping->topping }}</h3>
