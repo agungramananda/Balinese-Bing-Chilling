@@ -38,6 +38,7 @@
       </header>
       <section>
         <form method="GET" action="{{ route('catalog.show') }}">
+          @csrf
           <div class="filter-form">
             <div class="tipe">
           <label for="type">Type</label>
