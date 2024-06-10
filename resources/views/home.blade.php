@@ -248,5 +248,6 @@
         </section>
       </main>
     </div>
+    <script src="./js/bc_js/work.js"></script>
   </body>
 </html>
