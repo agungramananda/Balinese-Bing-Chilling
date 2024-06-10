@@ -40,7 +40,8 @@ class EskrimController extends Controller
             $query->whereIn('id', $es_id);
         }
 
-        $es = $query->orderBy('type_id')->get()->include('flavor');
+        $es = $query->orderBy('type_id')->get();
+        $es->load('flavors');
         $kosong = $es->isEmpty();
         $tipe = types::all();
         $rasa = flavors::all();
