@@ -7,7 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
-    @vite(['resources/css/style.css','resources/js/bc_js/catalog.js'])
+    <style>
+      {!! Vite::content('resources/css/style.css') !!}
+    </style>
+    <script>
+      {!! Vite::content('resources/js/bc_js/catalog.js') !!}
+    </script>
     <link rel="icon" href="/images/fav.ico?9" sizes="any"/>
   </head>
   <body class ="category-body" data-barba="wrapper">
