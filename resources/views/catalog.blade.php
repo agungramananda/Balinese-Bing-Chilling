@@ -77,8 +77,9 @@
                 <h3>Type : {{ $iceCream->type->type }}</h3>
                 <div class='flavor'>
                   <h3>Flavor :</h3>
+                  <ul>
                     @foreach($iceCream->flavor as $flavor)
-                      <span>{{ $flavor->flavor }}</span>
+                      <h4>{{ $flavor->flavor }}</h4>
                     @endforeach
                 </div>
                 <h3>Size : {{ $iceCream->size->size }}</h3>
