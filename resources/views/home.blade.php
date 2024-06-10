@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bing Chilling Enterprise</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    @vite(['resources/css/main.css','resources/js/bc_js/work.js'])
+    <style>
+      {!! Vite::content('resources/css/main.css') !!}
+    </style>
+    <script>
+      {!! Vite::content('resources/js/bc_js/work.js') !!}
+    </script>
     <link rel="icon" href="./images/fav.ico?9" sizes="any" />
   </head>
   <body>
@@ -243,6 +248,5 @@
         </section>
       </main>
     </div>
-    <script src="./js/bc_js/work.js"></script>
   </body>
 </html>
