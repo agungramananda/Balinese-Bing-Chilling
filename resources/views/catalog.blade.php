@@ -74,6 +74,8 @@
               @endif
               <div class="card-content">
                 <h2>{{ $iceCream->name }}</h3>
+                <h3>Type : {{ $iceCream->type->type }}</h3>
+                <h3>Flavor : {{ $iceCream->flavor-flavor }}</h3>
                 <h3>Size : {{ $iceCream->size->size }}</h3>
                 @if ($iceCream->topping!=null)
                   <h3>Topping : {{ $iceCream->topping->topping }}</h3>
