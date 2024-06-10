@@ -1,85 +1,151 @@
-/* Basic styles for the body */
+:root {
+    --brandColor: #fff;
+    --bg: #141414;
+}
+
+@font-face {
+    font-family: "s";
+    src: url("../fonts/s.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
-    background-color: #ffb7c4;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* Header and Navigation */
-header {
-    background-color: #ff6f91;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
+    font-family: "s";
+    color: var(--brandColor);
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: normal;
+    background-color: rgb(254, 217, 222);
     margin: 0;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
+a {
+    color: var(--brandColor);
+    font-style: bold;
+    font-weight: bold;
     text-decoration: none;
-    font-size: 18px;
 }
 
-nav ul li a.active {
-    border-bottom: 2px solid #fff;
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    padding: 1.5rem;
+    z-index: 50;
+}
+header ul {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+header ul li {
+    transform: translateY(-1rem);
+    opacity: 75%;
+}
+header .link {
+    transition: all 0.4s ease-in-out;
+    opacity: 75%;
+}
+header .link:hover,
+header .link.active {
+    opacity: 100%;
 }
 
-nav ul li a:hover {
-    color: #ffb7c4;
+.domLoaded.noDelay header ul li:nth-child(1) {
+    transition-delay: 0.4s;
+}
+.domLoaded.noDelay header ul li:nth-child(2) {
+    transition-delay: 0.5s;
+}
+.domLoaded.noDelay header ul li:nth-child(3) {
+    transition-delay: 0.6s;
+}
+.domLoaded header ul li {
+    transform: none;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+}
+.domLoaded header ul li:nth-child(1) {
+    transition-delay: 5.5s;
+}
+.domLoaded header ul li:nth-child(2) {
+    transition-delay: 5.6s;
+}
+.domLoaded header ul li:nth-child(3) {
+    transition-delay: 5.7s;
 }
 
-/* Form and Filters */
-form {
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 100px;
+    margin-bottom: 5px;
+    margin-right: 30px;
+    margin-left: 50px;
+}
+
+.tipe {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
 }
 
-form div {
-    margin-bottom: 15px;
-    width: 100%;
+.rasa {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
     font-size: 16px;
-    color: #333;
+    font-weight: bold;
+    font-style: normal;
+    color: black;
 }
 
 select {
+    display: block;
+    position: relative;
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
+    padding: 10px;
+    border: 1px solid black;
     border-radius: 5px;
     font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    appearance: none;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #ff6f91;
-    color: #fff;
+    display: flex;
+    flex-direction: right;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 0%;
+    padding: 10px 50px;
+    background-color: #ff8fb2;
+    color: white;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -89,14 +155,14 @@ button:hover {
 /* Ice Creams */
 .icecream {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
     gap: 20px;
     margin: 50px;
 }
 
 .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-image: linear-gradient(45deg, pink, white);
+    border: 1px solid white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -110,6 +176,8 @@ button:hover {
 }
 
 .card-content {
+    color: rgb(55, 55, 55);
+    font-weight: normal;
     padding: 15px;
     flex: 5;
     display: flex;
@@ -123,13 +191,13 @@ button:hover {
 
 .card-content p {
     margin: 0 0 10px;
-    color: #555;
+    color: rgb(55, 55, 55);
 }
 
 .price {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: rgb(55, 55, 55);
 }
 
 .card-image {
@@ -137,4 +205,15 @@ button:hover {
     height: auto;
     object-fit: cover;
     background-size: cover;
+}
+
+.peringatan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }

@@ -4,76 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
-    @vite('resources/css/style.css')
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+    @vite(['resources/css/style.css','resources/js/bc_js/catalog.js'])
+    <link rel="icon" href="/images/fav.ico?9" sizes="any"/>
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="{{ 'home' }}" class="link">
-              <span>Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ 'about' }}" class="link active">
-              <span>About</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ 'catalog' }}" class="link">
-              <span>Catalogue</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <form method="GET" action="{{ route('catalog.show') }}">
-      <div>
-        <div>
+  <body class ="category-body" data-barba="wrapper">
+    <div class="bg-container">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <a href="{{ 'home' }}" class="link">
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ 'about' }}" class="link">
+                <span>About</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ 'catalog' }}" class="link active">
+                <span>Catalogue</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <section>
+        <form method="GET" action="{{ route('catalog.show') }}">
+          <div class="filter-form">
+            <div class="tipe">
           <label for="type">Type</label>
           <select name="type" id="type">
             <option value="">All Types</option>
             @foreach ($tipe as $type)
-              <option value="{{ $type->id }}">{{ $type->type }}</option>
+              <option value="{{ $type->id }}" @if(request('type') == $type->id) selected @endif>{{ $type->type }}</option>
             @endforeach
           </select>
-        </div>
-      </div>
-      <div>
-        <label for="flavor">Flavor</label>
-        <select name="flavor" id="flavor">
+            </div>
+            <div class="rasa">
+              <label for="flavor">Flavor</label>
+              <select name="flavor" id="flavor">
           <option value="">All Flavors</option>
           @foreach ($rasa as $flavor)
-            <option value="{{ $flavor->id }}">{{ $flavor->flavor }}</option>
+            <option value="{{ $flavor->id }}" @if(request('flavor') == $flavor->id) selected @endif>{{ $flavor->flavor }}</option>
           @endforeach
-        </select>
-      </div>
-      <button type="submit">Filter</button>
-    </form>
-    
-    @if ($kosong)
-      <p>Nanda Gay</p>
-    @else
-      <div class="icecream">
-      @foreach ( $eskrim as $iceCream)
-        <div class="card">
-          @if ($iceCream->image)
-            <img src="{{ $iceCream->image }}" alt="" class="card-image" />
-          @else
-            <img src="/images/not-found.png" alt="Nanda Gay">
-          @endif
-          <div class="card-content">
-            <h3>{{ $iceCream->name }}</h3>
-            <h3>{{ $iceCream->type->type }}</h3>
-            <h3>{{ $iceCream->size->size }}</h3>
-            <h3>{{ $iceCream->topping->topping ?? "None" }}</h3>
-            <p>{{ $iceCream->description }}</p>
-            <p class="price">{{ $iceCream->price }}</p>
+              </select>
+            </div>
           </div>
-        </div>
-      @endforeach
-      </div>
-    @endif
+          <button type="submit">Filter</button>
+        </form>
+        
+        @if ($kosong)
+          <p class="peringatan">Not Available.</p>
+        @else
+          <div class="icecream">
+          @foreach ( $eskrim as $iceCream)
+            <div class="card">
+              @if ($iceCream->images!=null)
+                <img src="{{ $iceCream->images }}" alt="" class="card-image" />
+              @else
+                <img src="/images/not-found.png" alt="Nanda Gay">
+              @endif
+              <div class="card-content">
+                <h2>{{ $iceCream->name }}</h3>
+                <h3>Type : {{ $iceCream->type->type }}</h3>
+                <h3>Size : {{ $iceCream->size->size }}</h3>
+                @if ($iceCream->topping!=null)
+                  <h3>Topping : {{ $iceCream->topping->topping }}</h3>
+                @endif
+                <p>{{ $iceCream->description }}</p>
+                <span class="price">${{ $iceCream->price }}</span>
+              </div>
+            </div>
+          @endforeach
+          </div>
+        @endif
+      </section>
+    </div>
+    <script src="./js/bc_js/catalog.js"></script>
   </body>
 </html>

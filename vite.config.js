@@ -9,6 +9,7 @@ export default defineConfig({
                 "resources/css/style.css",
                 "resources/js/bc_js/work.js",
                 "resources/js/bc_js/about.js",
+                "resources/js/bc_js/catalog.js",
             ],
             refresh: true,
         }),
