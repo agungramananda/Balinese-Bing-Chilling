@@ -80,8 +80,9 @@
                   @foreach($iceCream->flavor as $flavor) 
                     @if (!$loop->last)
                       {{ $flavor->flavor }},
-                    @endif
-                    {{ $flavor->flavor }} 
+                    @else
+                      {{ $flavor->flavor }}
+                    @endif 
                   @endforeach
                 </h3>
                 <h3>Size : {{ $iceCream->size->size }}</h3>
