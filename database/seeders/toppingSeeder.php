@@ -20,7 +20,7 @@ class toppingSeeder extends Seeder
         toppings::create(['topping'=>'Rainbow Sprinkles']);
         toppings::create(['topping'=>'Chocolate Chips']);
         toppings::create(['topping'=>'Crushed Cookies']);
-        toppings::create(['topping'=>'RTropical Fruit Slices']);
+        toppings::create(['topping'=>'Tropical Fruit Slices']);
         toppings::create(['topping'=>'Marshmallows']);
     }
 }
